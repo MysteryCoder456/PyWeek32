@@ -1,1 +1,2 @@
 Infinity[[:space:]]Slasher/addons filter=lfs diff=lfs merge=lfs -text
+Infinity[[:space:]]Slasher/assets filter=lfs diff=lfs merge=lfs -text
