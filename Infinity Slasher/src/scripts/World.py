@@ -5,7 +5,7 @@ from godot import *
 @exposed
 class World(Node2D):
 
-	platforms_velocity = Vector2(-200, 0)
+	platforms_velocity = Vector2(-250, 0)
 	platforms_acceleration = Vector2(-0.05, 0)
 	
 	
