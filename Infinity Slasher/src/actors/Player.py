@@ -8,7 +8,7 @@ class Player(KinematicBody2D):
 	GRAVITY = 50
 	
 	velocity = Vector2.ZERO
-	jump_force = Vector2(0, -1000)
+	jump_force = Vector2(0, -800)
 	
 	
 	def _ready(self):
