@@ -5,10 +5,10 @@ from godot import *
 @exposed
 class Player(KinematicBody2D):
 	
-	GRAVITY = 50
+	GRAVITY = 40
 	
 	velocity = Vector2.ZERO
-	jump_force = Vector2(0, -800)
+	jump_force = Vector2(0, -640)
 	
 	
 	def _ready(self):

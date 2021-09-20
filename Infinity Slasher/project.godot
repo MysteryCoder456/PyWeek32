@@ -14,9 +14,17 @@ config/name="Infinity Slasher"
 run/main_scene="res://src/scenes/World.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/height=608
+
 [gdnative]
 
 singletons=[ "res://pythonscript.gdnlib" ]
+
+[global]
+
+gravity=false
 
 [importer_defaults]
 
