@@ -28,6 +28,8 @@ texture = ExtResource( 4 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 152.263, 282.974 )
 
+[node name="Orbs" type="Node" parent="."]
+
 [node name="Platforms" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )

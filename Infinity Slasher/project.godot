@@ -22,10 +22,6 @@ window/size/height=768
 
 singletons=[ "res://pythonscript.gdnlib" ]
 
-[global]
-
-gravity=false
-
 [importer_defaults]
 
 texture={
@@ -71,6 +67,7 @@ fall={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Structures"
 2d_physics/layer_3="Enemies"
+2d_physics/layer_4="Boundaries"
 
 [physics]
 
