@@ -1,5 +1,8 @@
 from godot import exposed, export
 from godot import *
+from random import randint
+
+ORB_SCENE = ResourceLoader.load("res://src/actors/Orb.tscn")
 
 
 @exposed
@@ -15,11 +18,26 @@ class World(Node2D):
 	def _ready(self):
 		self.background = self.get_node("Background")
 		self.platforms = self.get_node("Platforms")
-	
-	
+		self.orbs = self.get_node("Orbs")
+		self.orb_spawn = self.get_node("OrbSpawn")
+		
+		
 	def _physics_process(self, delta):
 		self.move_background(delta)
 		self.move_platforms(delta)
+		
+		
+	def _on_OrbSpawnTimer_timeout(self):
+		orb_position = self.orb_spawn.position
+		orb_velocity = Vector2(
+			randint(-10, 0),
+			randint(-10, 10)
+		)
+		
+		new_orb = ORB_SCENE.instance()
+		new_orb.position = orb_position
+		new_orb.linear_velocity = orb_velocity
+		self.orbs.add_child(new_orb)
 		
 		
 	def move_background(self, delta):

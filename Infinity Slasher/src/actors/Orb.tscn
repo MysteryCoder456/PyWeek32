@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/spriteframes/Orb.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://src/scripts/Orb.py" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 24.0832
@@ -10,6 +11,7 @@ collision_layer = 4
 collision_mask = 12
 mode = 2
 gravity_scale = 0.0
+script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )

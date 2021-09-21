@@ -16,7 +16,7 @@ class Player(KinematicBody2D):
 	GRAVITY = 30
 	
 	velocity = Vector2.ZERO
-	jump_force = Vector2(0, -640)
+	jump_force = Vector2(0, -500)
 	was_on_floor = False
 	state = State.RUNNING
 	
