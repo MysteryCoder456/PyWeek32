@@ -20,18 +20,9 @@ class Player(KinematicBody2D):
 	state = State.RUNNING
 	
 	
-	def jump(self):
-		self.velocity += self.jump_force
-		self.state = State.JUMPING
-		
-		
-	def move_to_platform(self, y_direction):
-		self.position += Vector2(0, y_direction * 256)
-		# TODO: particles
-	
-	
 	def _ready(self):
 		self.animated_sprite = self.get_node("AnimatedSprite")
+		self.magic_particles = self.get_node("MagicParticles")
 		
 		
 	def _physics_process(self, delta):
@@ -70,6 +61,16 @@ class Player(KinematicBody2D):
 			self.velocity.y += self.GRAVITY
 		
 		self.velocity = self.move_and_slide(self.velocity, Vector2.UP)
+	
+	
+	def jump(self):
+		self.velocity += self.jump_force
+		self.state = State.JUMPING
+		
+		
+	def move_to_platform(self, y_direction):
+		self.position += Vector2(0, y_direction * 256)
+		self.magic_particles.restart()
 		
 		
 	def _on_AnimatedSprite_animation_finished(self):
