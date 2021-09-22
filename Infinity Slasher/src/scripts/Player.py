@@ -17,13 +17,17 @@ class Player(KinematicBody2D):
 	
 	velocity = Vector2.ZERO
 	jump_force = Vector2(0, -500)
-	was_on_floor = False
 	state = State.RUNNING
 	
 	
 	def jump(self):
 		self.velocity += self.jump_force
 		self.state = State.JUMPING
+		
+		
+	def move_to_platform(self, y_direction):
+		self.position += Vector2(0, y_direction * 256)
+		# TODO: particles
 	
 	
 	def _ready(self):
@@ -31,6 +35,12 @@ class Player(KinematicBody2D):
 		
 		
 	def _physics_process(self, delta):
+		# Detect input here because _input function crashes game
+		if Input.is_action_just_pressed("move_platform_up") and self.position.y > 256:
+			self.move_to_platform(-1)
+		elif Input.is_action_just_pressed("move_platform_down") and self.position.y < 512:
+			self.move_to_platform(1)
+		
 		# State machine
 		if self.state == State.RUNNING:
 			self.animated_sprite.play("run")
@@ -60,7 +70,6 @@ class Player(KinematicBody2D):
 			self.velocity.y += self.GRAVITY
 		
 		self.velocity = self.move_and_slide(self.velocity, Vector2.UP)
-		self.was_on_floor = self.is_on_floor()
 		
 		
 	def _on_AnimatedSprite_animation_finished(self):
