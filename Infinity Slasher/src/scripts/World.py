@@ -30,8 +30,8 @@ class World(Node2D):
 	def _on_OrbSpawnTimer_timeout(self):
 		orb_position = self.orb_spawn.position
 		orb_velocity = Vector2(
-			randint(-10, 0),
-			randint(-10, 10)
+			randint(-100, 0),
+			randint(-100, 100)
 		)
 		
 		new_orb = ORB_SCENE.instance()
