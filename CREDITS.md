@@ -6,3 +6,4 @@
 2. [Jestan](https://jestan.itch.io/) - Floor Tiles
 3. [Deep-Fold](https://deep-fold.itch.io/) - Background
 4. [AntumDeluge](https://opengameart.org/users/antumdeluge) - Orbs
+5. [AlejandroHaibi](art.org/users/alejandrohaibi) - Laser Bolt
