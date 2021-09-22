@@ -80,6 +80,7 @@ move_right={
 2d_physics/layer_2="Structures"
 2d_physics/layer_3="Enemies"
 2d_physics/layer_4="Boundaries"
+2d_physics/layer_5="Projectiles"
 
 [physics]
 

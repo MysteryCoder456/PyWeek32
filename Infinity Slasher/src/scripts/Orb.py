@@ -13,13 +13,14 @@ class Orb(RigidBody2D):
 		
 		
 	def _on_ShootTimer_timeout(self):
-		target = self.find_parent("World").get_node("Player")
+		world = self.find_parent("World")
+		target = world.get_node("Player")
 		
 		if target.global_position.distance_to(self.global_position) > 200:
 			laser_position = self.position
-			laser_velocity = (target.global_position - self.global_position).normalized() * 300
+			laser_velocity = (target.global_position - self.global_position).normalized() * 350
 			
 			new_laser = LASER_SCENE.instance()
 			new_laser.position = laser_position
 			new_laser.velocity = laser_velocity
-			self.get_parent().add_child(new_laser)
+			world.get_node("Lasers").add_child(new_laser)

@@ -28,16 +28,17 @@ class World(Node2D):
 		
 		
 	def _on_OrbSpawnTimer_timeout(self):
-		orb_position = self.orb_spawn.position
-		orb_velocity = Vector2(
-			randint(-100, 0),
-			randint(-100, 100)
-		)
-		
-		new_orb = ORB_SCENE.instance()
-		new_orb.position = orb_position
-		new_orb.linear_velocity = orb_velocity
-		self.orbs.add_child(new_orb)
+		if self.orbs.get_child_count() < 4:
+			orb_position = self.orb_spawn.position
+			orb_velocity = Vector2(
+				randint(-100, 0),
+				randint(-100, 100)
+			)
+			
+			new_orb = ORB_SCENE.instance()
+			new_orb.position = orb_position
+			new_orb.linear_velocity = orb_velocity
+			self.orbs.add_child(new_orb)
 		
 		
 	def move_background(self, delta):
