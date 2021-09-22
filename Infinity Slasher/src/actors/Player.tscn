@@ -2,12 +2,10 @@
 
 [ext_resource path="res://src/spriteframes/Player.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://src/scripts/Player.py" type="Script" id=2]
+[ext_resource path="res://src/curves/ParticleFade.tres" type="Curve" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18, 28 )
-
-[sub_resource type="Curve" id=2]
-_data = [ Vector2( 0.00458715, 1 ), 0.0, -0.0816711, 0, 0, Vector2( 0.995413, 0.0507824 ), -3.12402, 0.0, 0, 0 ]
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 10
@@ -39,7 +37,7 @@ angle = 45.0
 angle_random = 1.0
 scale_amount = 5.0
 scale_amount_random = 0.6
-scale_amount_curve = SubResource( 2 )
+scale_amount_curve = ExtResource( 3 )
 color = Color( 0.945098, 0.870588, 0.0588235, 1 )
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
