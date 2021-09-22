@@ -35,6 +35,8 @@ class Player(KinematicBody2D):
 		if self.state == State.RUNNING:
 			self.animated_sprite.play("run")
 			
+			self.velocity.x = (Input.get_action_strength("move_right") - Input.get_action_strength("move_left")) * 150
+			
 			if Input.is_action_just_pressed("jump"):
 				self.jump()
 		
