@@ -8,11 +8,13 @@ class Laser(KinematicBody2D):
 	
 	velocity = export(Vector2)
 	damage = randint(5, 15)
+	_game_over = False
 	
 	
 	def _physics_process(self, delta):
-		self.velocity = self.move_and_slide(self.velocity)
-		self.look_at(self.global_position + self.velocity)
+		if not self._game_over:
+			self.velocity = self.move_and_slide(self.velocity)
+			self.look_at(self.global_position + self.velocity)
 		
 		
 	def _on_CollisionDetector_body_entered(self, body):
@@ -21,3 +23,7 @@ class Laser(KinematicBody2D):
 			
 		self.get_parent().remove_child(self)
 		self.queue_free()
+		
+		
+	def game_over(self):
+		self._game_over = True

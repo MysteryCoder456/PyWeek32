@@ -20,6 +20,9 @@ class World(Node2D):
 	player_health = 100
 	player_score = 0
 	
+	platforms_final_pos = None
+	bg_final_pos = None
+	
 	
 	def _ready(self):
 		self.background = self.get_node("Background")
@@ -28,6 +31,7 @@ class World(Node2D):
 		self.orb_spawn = self.get_node("OrbSpawn")
 		self.orb_spawn_timer = self.get_node("OrbSpawnTimer")
 		self.hud = self.get_node("HUD")
+		self.player = self.get_node("Player")
 		
 		
 	def _physics_process(self, delta):
@@ -68,18 +72,43 @@ class World(Node2D):
 		self.player_health -= damage
 		self.hud.set_health(self.player_health)
 		
+		if self.player_health <= 0:
+			self.game_over()
+			
+			
+	def game_over(self):
+		self.hud.game_over()
+		self.get_tree().call_group("Orb", "game_over")
+		self.get_tree().call_group("Laser", "game_over")
+		self.player.game_over()
+		
+		self.orb_spawn_timer.stop()
+		
+		self.platforms_final_pos = self.platforms.position
+		self.bg_final_pos = self.background.position
+		
+		print("game over lmao")
+		
 		
 	def move_background(self, delta):
-		self.bg_velocity += self.bg_acceleration
-		self.background.position += self.bg_velocity * delta
-		
-		if self.background.position.x <= -1000:
-			self.background.position += Vector2(1000, 0)
+		if self.bg_final_pos:
+			self.background.position = self.bg_final_pos
+			
+		else:
+			self.bg_velocity += self.bg_acceleration
+			self.background.position += self.bg_velocity * delta
+			
+			if self.background.position.x <= -1000:
+				self.background.position += Vector2(1000, 0)
 		
 		
 	def move_platforms(self, delta):
-		self.platforms_velocity += self.platforms_acceleration
-		self.platforms.position += self.platforms_velocity * delta
-		
-		if self.platforms.position.x <= -32 * self.platforms.cell_size.x:
-			self.platforms.position += Vector2(32 * self.platforms.cell_size.x, 0)
+		if self.platforms_final_pos:
+			self.platforms.position = self.platforms_final_pos
+			
+		else:
+			self.platforms_velocity += self.platforms_acceleration
+			self.platforms.position += self.platforms_velocity * delta
+			
+			if self.platforms.position.x <= -32 * self.platforms.cell_size.x:
+				self.platforms.position += Vector2(32 * self.platforms.cell_size.x, 0)

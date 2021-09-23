@@ -10,6 +10,7 @@ class Orb(RigidBody2D):
 	def _ready(self):
 		self.animated_sprite = self.get_node("AnimatedSprite")
 		self.animated_sprite.play("default")
+		self.shoot_timer = self.get_node("ShootTimer")
 		self.shoot_particles = self.get_node("ShootParticles")
 		
 		
@@ -29,3 +30,9 @@ class Orb(RigidBody2D):
 			
 			self.shoot_particles.direction = laser_direction
 			self.shoot_particles.restart()
+			
+			
+	def game_over(self):
+		self.sleeping = True
+		self.animated_sprite.stop()
+		self.shoot_timer.stop()

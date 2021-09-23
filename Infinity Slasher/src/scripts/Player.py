@@ -20,12 +20,14 @@ class Player(KinematicBody2D):
 	jump_force = Vector2(0, -600)
 	state = State.RUNNING
 	attackable_bodies = []
+	_game_over = export(bool)
 	
 	
 	def _ready(self):
 		self.animated_sprite = self.get_node("AnimatedSprite")
 		self.magic_particles = self.get_node("MagicParticles")
 		self.attack_timer = self.get_node("AttackTimer")
+		self._game_over = False
 		
 	
 	def _process_input(self):
@@ -70,6 +72,9 @@ class Player(KinematicBody2D):
 		
 		
 	def _physics_process(self, delta):
+		if self._game_over:
+			return
+			
 		self._process_input()
 		self.state_machine()
 		
@@ -94,6 +99,11 @@ class Player(KinematicBody2D):
 	def move_to_platform(self, y_direction):
 		self.position += Vector2(0, y_direction * 256)
 		self.magic_particles.restart()
+		
+		
+	def game_over(self):
+		self._game_over = True
+		self.animated_sprite.stop()
 		
 		
 	def _on_AnimatedSprite_animation_finished(self):

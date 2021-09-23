@@ -7,7 +7,9 @@
 a = Vector2( -16, 0 )
 b = Vector2( 16, 0 )
 
-[node name="Laser" type="KinematicBody2D"]
+[node name="Laser" type="KinematicBody2D" groups=[
+"Laser",
+]]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
