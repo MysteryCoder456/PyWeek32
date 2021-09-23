@@ -35,7 +35,7 @@ class World(Node2D):
 		self.move_background(delta)
 		self.move_platforms(delta)
 		self.orb_spawn_timer.wait_time *= 0.9999
-		self.orb_limit += 0.001
+		self.orb_limit += 0.0002
 		
 		
 	def _on_OrbSpawnTimer_timeout(self):
@@ -74,7 +74,7 @@ class World(Node2D):
 			
 			
 	def game_over(self):
-		self.hud.game_over()
+		self.hud.game_over(self.player_score)
 		self.get_tree().call_group("Orb", "game_over")
 		self.get_tree().call_group("Laser", "game_over")
 		self.player.game_over()
