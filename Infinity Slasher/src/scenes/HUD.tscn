@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/dynamicfonts/Pixellari-26.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/scripts/HUD.py" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.231373, 0.709804, 0.113725, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.211765, 0.211765, 0.211765, 1 )
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="HUD" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="V" type="HBoxContainer" parent="HUD"]
+anchor_right = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="ProgressBar" parent="HUD/V"]
+margin_right = 338.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+value = 100.0
+rounded = true
+
+[node name="Spacer" type="Control" parent="HUD/V"]
+margin_left = 342.0
+margin_right = 681.0
+margin_bottom = 27.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+
+[node name="ScoreLabel" type="Label" parent="HUD/V"]
+margin_left = 685.0
+margin_right = 1024.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Score: 0"
+align = 2
+valign = 1
+uppercase = true
