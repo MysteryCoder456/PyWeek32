@@ -10,10 +10,7 @@ ORB_DEATH_PARTICLES_SCENE = ResourceLoader.load("res://src/particles/OrbDeathPar
 class World(Node2D):
 
 	platforms_velocity = Vector2(-250, 0)
-	platforms_acceleration = Vector2(-0.05, 0)
-	
 	bg_velocity = platforms_velocity / 15
-	bg_acceleration = platforms_acceleration / 15
 	
 	orb_limit = 6
 	
@@ -37,8 +34,8 @@ class World(Node2D):
 	def _physics_process(self, delta):
 		self.move_background(delta)
 		self.move_platforms(delta)
-		self.orb_spawn_timer.wait_time *= 0.99999
-		self.orb_limit += 0.0001
+		self.orb_spawn_timer.wait_time *= 0.9999
+		self.orb_limit += 0.001
 		
 		
 	def _on_OrbSpawnTimer_timeout(self):
@@ -95,7 +92,6 @@ class World(Node2D):
 			self.background.position = self.bg_final_pos
 			
 		else:
-			self.bg_velocity += self.bg_acceleration
 			self.background.position += self.bg_velocity * delta
 			
 			if self.background.position.x <= -1000:
@@ -107,7 +103,6 @@ class World(Node2D):
 			self.platforms.position = self.platforms_final_pos
 			
 		else:
-			self.platforms_velocity += self.platforms_acceleration
 			self.platforms.position += self.platforms_velocity * delta
 			
 			if self.platforms.position.x <= -32 * self.platforms.cell_size.x:
