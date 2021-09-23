@@ -66,6 +66,7 @@ class Player(KinematicBody2D):
 				
 		elif self.state == State.ATTACKING:
 			self.animated_sprite.play("attack")
+			self.velocity.y = 0
 		
 		
 	def _physics_process(self, delta):
@@ -87,7 +88,6 @@ class Player(KinematicBody2D):
 	def attack(self):
 		if self.state != State.ATTACKING:
 			self.attack_timer.start()
-			self.velocity.y = 0
 			self.state = State.ATTACKING
 		
 		
