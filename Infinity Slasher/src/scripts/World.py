@@ -39,6 +39,11 @@ class World(Node2D):
 			new_orb.position = orb_position
 			new_orb.linear_velocity = orb_velocity
 			self.orbs.add_child(new_orb)
+			
+			
+	def remove_orb(self, orb):
+		self.orbs.remove_child(orb)
+		orb.queue_free()
 		
 		
 	def move_background(self, delta):

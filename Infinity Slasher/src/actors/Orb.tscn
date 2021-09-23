@@ -7,7 +7,9 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 24.0832
 
-[node name="Orb" type="RigidBody2D"]
+[node name="Orb" type="RigidBody2D" groups=[
+"Attackable",
+]]
 collision_layer = 4
 collision_mask = 12
 mode = 2

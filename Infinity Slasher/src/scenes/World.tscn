@@ -6,7 +6,9 @@
 [ext_resource path="res://assets/Space Background.png" type="Texture" id=4]
 [ext_resource path="res://src/physicsmaterials/Boundary.tres" type="PhysicsMaterial" id=5]
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" groups=[
+"World",
+]]
 script = ExtResource( 3 )
 
 [node name="Background" type="Node2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/spriteframes/Player.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://src/scripts/Player.py" type="Script" id=2]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18, 28 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 18 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 10
@@ -40,4 +43,18 @@ scale_amount_random = 0.6
 scale_amount_curve = ExtResource( 3 )
 color = Color( 0.945098, 0.870588, 0.0588235, 1 )
 
+[node name="AttackDetector" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackDetector"]
+position = Vector2( 30, 6 )
+shape = SubResource( 2 )
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.16
+one_shot = true
+
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="body_entered" from="AttackDetector" to="." method="_on_AttackDetector_body_entered"]
+[connection signal="body_exited" from="AttackDetector" to="." method="_on_AttackDetector_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]

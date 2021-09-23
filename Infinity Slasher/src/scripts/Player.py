@@ -19,11 +19,13 @@ class Player(KinematicBody2D):
 	velocity = Vector2.ZERO
 	jump_force = Vector2(0, -550)
 	state = State.RUNNING
+	attackable_bodies = []
 	
 	
 	def _ready(self):
 		self.animated_sprite = self.get_node("AnimatedSprite")
 		self.magic_particles = self.get_node("MagicParticles")
+		self.attack_timer = self.get_node("AttackTimer")
 		
 	
 	def _process_input(self):
@@ -83,9 +85,10 @@ class Player(KinematicBody2D):
 		
 		
 	def attack(self):
-		self.velocity.y = 0
-		self.state = State.ATTACKING
-		# TODO: add code is destroy enemies
+		if self.state != State.ATTACKING:
+			self.attack_timer.start()
+			self.velocity.y = 0
+			self.state = State.ATTACKING
 		
 		
 	def move_to_platform(self, y_direction):
@@ -100,3 +103,18 @@ class Player(KinematicBody2D):
 			
 		elif self.state == State.ATTACKING:
 			self.state = State.FALLING
+			
+			
+	def _on_AttackDetector_body_entered(self, body):
+		if body.is_in_group("Attackable"):
+			self.attackable_bodies.append(body)
+			
+			
+	def _on_AttackDetector_body_exited(self, body):
+		if body.is_in_group("Attackable"):
+			self.attackable_bodies.remove(body)
+			
+			
+	def _on_AttackTimer_timeout(self):
+		for body in self.attackable_bodies:
+			self.get_tree().call_group("World", "remove_orb", body)

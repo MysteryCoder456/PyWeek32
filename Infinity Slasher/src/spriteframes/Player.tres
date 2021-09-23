@@ -24,7 +24,7 @@ animations = [ {
 "frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 18 ) ],
 "loop": true,
 "name": "attack",
-"speed": 10.0
+"speed": 12.0
 }, {
 "frames": [ ExtResource( 8 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 9 ) ],
 "loop": true,
@@ -36,13 +36,13 @@ animations = [ {
 "name": "fall",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 9 ) ],
-"loop": true,
-"name": "mid air",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 1 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "run",
 "speed": 12.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "mid air",
+"speed": 5.0
 } ]
