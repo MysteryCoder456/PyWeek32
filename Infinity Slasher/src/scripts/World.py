@@ -3,6 +3,7 @@ from godot import *
 from random import randint
 
 ORB_SCENE = ResourceLoader.load("res://src/actors/Orb.tscn")
+ORB_DEATH_PARTICLES_SCENE = ResourceLoader.load("res://src/particles/OrbDeathParticles.tscn")
 
 
 @exposed
@@ -28,7 +29,7 @@ class World(Node2D):
 		
 		
 	def _on_OrbSpawnTimer_timeout(self):
-		if self.orbs.get_child_count() < 4:
+		if self.orbs.get_child_count() < 6:
 			orb_position = self.orb_spawn.position
 			orb_velocity = Vector2(
 				randint(-100, 0),
@@ -44,6 +45,11 @@ class World(Node2D):
 	def remove_orb(self, orb):
 		self.orbs.remove_child(orb)
 		orb.queue_free()
+		
+		death_particles = ORB_DEATH_PARTICLES_SCENE.instance()
+		self.add_child(death_particles)
+		death_particles.global_position = orb.global_position
+		death_particles.restart()
 		
 		
 	def move_background(self, delta):

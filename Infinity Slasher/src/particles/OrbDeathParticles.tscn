@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/curves/ParticleFade.tres" type="Curve" id=1]
+[ext_resource path="res://src/scripts/OrbDeathParticles.py" type="Script" id=2]
+
+[node name="OrbDeathParticles" type="CPUParticles2D"]
+emitting = false
+amount = 50
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+randomness = 0.5
+lifetime_randomness = 0.5
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 50.0
+scale_amount = 5.0
+scale_amount_curve = ExtResource( 1 )
+color = Color( 0.470588, 0.796078, 0.807843, 1 )
+script = ExtResource( 2 )
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_DespawnTimer_timeout"]

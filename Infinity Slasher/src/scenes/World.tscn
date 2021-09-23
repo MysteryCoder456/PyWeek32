@@ -65,7 +65,7 @@ tile_data = PoolIntArray( 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0
 position = Vector2( 1000, 355 )
 
 [node name="OrbSpawnTimer" type="Timer" parent="."]
-wait_time = 7.0
+wait_time = 6.0
 autostart = true
 
 [connection signal="timeout" from="OrbSpawnTimer" to="." method="_on_OrbSpawnTimer_timeout"]
