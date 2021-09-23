@@ -17,7 +17,7 @@ class Orb(RigidBody2D):
 		world = self.find_parent("World")
 		target = world.get_node("Player")
 		
-		if target.global_position.distance_to(self.global_position) > 200:
+		if target.global_position.distance_to(self.global_position) > 100:
 			laser_position = self.position
 			laser_direction = (target.global_position - self.global_position).normalized()
 			laser_velocity = laser_direction * 350

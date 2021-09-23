@@ -26,7 +26,7 @@ frame = 2
 shape = SubResource( 1 )
 
 [node name="ShootTimer" type="Timer" parent="."]
-wait_time = 4.5
+wait_time = 2.5
 autostart = true
 
 [node name="ShootParticles" type="CPUParticles2D" parent="."]
