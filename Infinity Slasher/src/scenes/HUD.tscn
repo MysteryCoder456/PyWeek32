@@ -16,6 +16,9 @@ script = ExtResource( 2 )
 [node name="HUD" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -28,7 +31,7 @@ __meta__ = {
 }
 
 [node name="HealthBar" type="ProgressBar" parent="HUD/V"]
-margin_right = 338.0
+margin_right = 335.0
 margin_bottom = 27.0
 size_flags_horizontal = 3
 custom_styles/fg = SubResource( 1 )
@@ -38,15 +41,15 @@ value = 100.0
 rounded = true
 
 [node name="Spacer" type="Control" parent="HUD/V"]
-margin_left = 342.0
-margin_right = 681.0
+margin_left = 339.0
+margin_right = 674.0
 margin_bottom = 27.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 
 [node name="ScoreLabel" type="Label" parent="HUD/V"]
-margin_left = 685.0
-margin_right = 1024.0
+margin_left = 678.0
+margin_right = 1014.0
 margin_bottom = 27.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
