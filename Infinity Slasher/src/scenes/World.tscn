@@ -66,7 +66,7 @@ tile_data = PoolIntArray( 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0
 position = Vector2( 1000, 355 )
 
 [node name="OrbSpawnTimer" type="Timer" parent="."]
-wait_time = 4.5
+wait_time = 5.0
 autostart = true
 
 [node name="HUD" parent="." instance=ExtResource( 6 )]
