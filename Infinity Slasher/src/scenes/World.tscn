@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/tilesets/Platforms.tres" type="TileSet" id=2]
 [ext_resource path="res://src/scripts/World.py" type="Script" id=3]
 [ext_resource path="res://assets/Space Background.png" type="Texture" id=4]
 [ext_resource path="res://src/physicsmaterials/Boundary.tres" type="PhysicsMaterial" id=5]
+[ext_resource path="res://src/scenes/HUD.tscn" type="PackedScene" id=6]
 
 [node name="World" type="Node2D" groups=[
 "World",
@@ -67,5 +68,7 @@ position = Vector2( 1000, 355 )
 [node name="OrbSpawnTimer" type="Timer" parent="."]
 wait_time = 4.5
 autostart = true
+
+[node name="HUD" parent="." instance=ExtResource( 6 )]
 
 [connection signal="timeout" from="OrbSpawnTimer" to="." method="_on_OrbSpawnTimer_timeout"]

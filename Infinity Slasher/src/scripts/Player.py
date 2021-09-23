@@ -17,7 +17,7 @@ class Player(KinematicBody2D):
 	GRAVITY = 30
 	
 	velocity = Vector2.ZERO
-	jump_force = Vector2(0, -550)
+	jump_force = Vector2(0, -600)
 	state = State.RUNNING
 	attackable_bodies = []
 	
@@ -44,7 +44,7 @@ class Player(KinematicBody2D):
 		if self.state == State.RUNNING:
 			self.animated_sprite.play("run")
 			
-			self.velocity.x = (Input.get_action_strength("move_right") - Input.get_action_strength("move_left")) * 150
+			self.velocity.x = (Input.get_action_strength("move_right") - Input.get_action_strength("move_left")) * 200
 			
 			if Input.is_action_just_pressed("jump"):
 				self.jump()

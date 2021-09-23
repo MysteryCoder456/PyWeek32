@@ -32,8 +32,8 @@ class World(Node2D):
 		if self.orbs.get_child_count() < 6:
 			orb_position = self.orb_spawn.position
 			orb_velocity = Vector2(
-				randint(-100, 0),
-				randint(-100, 100)
+				randint(-150, 0),
+				randint(-150, 150)
 			)
 			
 			new_orb = ORB_SCENE.instance()
