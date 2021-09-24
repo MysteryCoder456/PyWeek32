@@ -5,6 +5,10 @@ Made with Godot Engine and Python.
 
 ## Running the game
 
+**NOTE**: You do not need Python installed on your computer to run from source
+code. The game already has an interpreter as a part of the [godot-python](https://github.com/touilleMan/godot-python)
+extension.
+
 1. Clone/Download this repository.
 2. Download [Godot Engine](https://godotengine.org/download).
 3. Open Godot and click `Import` on the right hand side. Then navigate to where
