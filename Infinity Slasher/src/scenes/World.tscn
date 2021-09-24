@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/tilesets/Platforms.tres" type="TileSet" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/Space Background.png" type="Texture" id=4]
 [ext_resource path="res://src/physicsmaterials/Boundary.tres" type="PhysicsMaterial" id=5]
 [ext_resource path="res://src/scenes/HUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sounds/GameMusic_start.wav" type="AudioStream" id=7]
 
 [node name="World" type="Node2D" groups=[
 "World",
@@ -71,4 +72,9 @@ autostart = true
 
 [node name="HUD" parent="." instance=ExtResource( 6 )]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
+
 [connection signal="timeout" from="OrbSpawnTimer" to="." method="_on_OrbSpawnTimer_timeout"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

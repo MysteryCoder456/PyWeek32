@@ -4,6 +4,7 @@ from random import randint
 
 ORB_SCENE = ResourceLoader.load("res://src/actors/Orb.tscn")
 ORB_DEATH_PARTICLES_SCENE = ResourceLoader.load("res://src/particles/OrbDeathParticles.tscn")
+MAIN_MUSIC = ResourceLoader.load("res://sounds/GameMusic_main.wav")
 
 
 @exposed
@@ -30,6 +31,8 @@ class World(Node2D):
 		self.hud = self.get_node("HUD")
 		self.player = self.get_node("Player")
 		
+		self.music_player = self.get_node("AudioStreamPlayer")
+		
 		
 	def _physics_process(self, delta):
 		self.move_background(delta)
@@ -50,6 +53,12 @@ class World(Node2D):
 			new_orb.position = orb_position
 			new_orb.linear_velocity = orb_velocity
 			self.orbs.add_child(new_orb)
+			
+			
+	def _on_AudioStreamPlayer_finished(self):
+		if self.music_player.stream.get_length() < 10:
+			self.music_player.stream = MAIN_MUSIC
+			self.music_player.playing = True
 			
 			
 	def remove_orb(self, orb):
@@ -83,6 +92,8 @@ class World(Node2D):
 		
 		self.platforms_final_pos = self.platforms.position
 		self.bg_final_pos = self.background.position
+		
+		self.music_player.stop()
 		
 		print("game over lmao")
 		
