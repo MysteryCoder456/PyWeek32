@@ -15,3 +15,8 @@ OR
 
 Just download a prebuilt binary from the Releases section (if I figured out
 exporting with Godot-Python).
+
+## Controls
+
+W and S to switch platforms. A and D to move left and right. Space to jump and
+Enter to shoot
