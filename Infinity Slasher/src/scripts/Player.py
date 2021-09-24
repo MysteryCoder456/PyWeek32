@@ -27,6 +27,8 @@ class Player(KinematicBody2D):
 		self.animated_sprite = self.get_node("AnimatedSprite")
 		self.magic_particles = self.get_node("MagicParticles")
 		self.attack_timer = self.get_node("AttackTimer")
+		self.point_sound = self.get_node("PointSound")
+		
 		self._game_over = False
 		
 	
@@ -126,5 +128,8 @@ class Player(KinematicBody2D):
 			
 			
 	def _on_AttackTimer_timeout(self):
+		if self.attackable_bodies:
+			self.point_sound.play()
+		
 		for body in self.attackable_bodies:
 			self.get_tree().call_group("World", "remove_orb", body)
