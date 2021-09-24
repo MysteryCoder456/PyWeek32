@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/spriteframes/Orb.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://src/scripts/Orb.py" type="Script" id=2]
 [ext_resource path="res://src/curves/ParticleFade.tres" type="Curve" id=3]
+[ext_resource path="res://sounds/shoot.wav" type="AudioStream" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 24.0832
@@ -47,5 +48,8 @@ angle_random = 0.45
 scale_amount = 4.0
 scale_amount_curve = ExtResource( 3 )
 color = Color( 0, 0.619608, 1, 1 )
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

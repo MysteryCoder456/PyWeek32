@@ -12,6 +12,7 @@ class Orb(RigidBody2D):
 		self.animated_sprite.play("default")
 		self.shoot_timer = self.get_node("ShootTimer")
 		self.shoot_particles = self.get_node("ShootParticles")
+		self.shoot_sound = self.get_node("ShootSound")
 		
 		
 	def _on_ShootTimer_timeout(self):
@@ -30,6 +31,8 @@ class Orb(RigidBody2D):
 			
 			self.shoot_particles.direction = laser_direction
 			self.shoot_particles.restart()
+			
+			self.shoot_sound.play()
 			
 			
 	def game_over(self):
