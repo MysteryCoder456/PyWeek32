@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/tilesets/Platforms.tres" type="TileSet" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/physicsmaterials/Boundary.tres" type="PhysicsMaterial" id=5]
 [ext_resource path="res://src/scenes/HUD.tscn" type="PackedScene" id=6]
 [ext_resource path="res://sounds/GameMusic_start.wav" type="AudioStream" id=7]
+[ext_resource path="res://src/dynamicfonts/Pixellari-26.tres" type="DynamicFont" id=8]
 
 [node name="World" type="Node2D" groups=[
 "World",
@@ -76,5 +77,27 @@ autostart = true
 stream = ExtResource( 7 )
 autoplay = true
 
+[node name="InstructionsLabel" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1024.0
+margin_bottom = 768.0
+custom_fonts/font = ExtResource( 8 )
+text = "WS to Move Platforms
+AD to Run
+Space to Jump
+Enter to Sword Slash"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InstructionsTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
 [connection signal="timeout" from="OrbSpawnTimer" to="." method="_on_OrbSpawnTimer_timeout"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]
+[connection signal="timeout" from="InstructionsTimer" to="." method="_on_InstructionsTimer_timeout"]

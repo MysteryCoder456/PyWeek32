@@ -30,8 +30,8 @@ class World(Node2D):
 		self.orb_spawn_timer = self.get_node("OrbSpawnTimer")
 		self.hud = self.get_node("HUD")
 		self.player = self.get_node("Player")
-		
 		self.music_player = self.get_node("AudioStreamPlayer")
+		self.instructions_label = self.get_node("InstructionsLabel")
 		
 		
 	def _physics_process(self, delta):
@@ -55,6 +55,10 @@ class World(Node2D):
 			self.orbs.add_child(new_orb)
 			
 			
+	def _on_InstructionsTimer_timeout(self):
+		self.instructions_label.visible = False
+			
+			
 	def _on_AudioStreamPlayer_finished(self):
 		if self.music_player.stream.get_length() < 10:
 			self.music_player.stream = MAIN_MUSIC
@@ -67,7 +71,7 @@ class World(Node2D):
 		
 		death_particles = ORB_DEATH_PARTICLES_SCENE.instance()
 		self.add_child(death_particles)
-		death_particles.global_position = orb.global_position
+		death_particles.position = orb.position
 		death_particles.restart()
 		
 		self.player_score += 1
