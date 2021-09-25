@@ -12,7 +12,8 @@ extension.
 1. Clone/Download this repository.
 2. Download [Godot Engine](https://godotengine.org/download).
 3. Open Godot and click `Import` on the right hand side. Then navigate to where
-you downloaded this repository and click `Import & Edit`.
+you downloaded this repository, enter the `Infinity Slasher` folder, select the
+`project.godot` file, and then click `Import & Edit`.
 4. Click the Play Button in the top right corner of the Editor.
 
 OR
